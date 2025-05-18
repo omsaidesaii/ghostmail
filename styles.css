@@ -1,0 +1,716 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+:root {
+    /* Dark Theme Variables */
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --secondary-color: #64748b;
+    --success-color: #22c55e;
+    --danger-color: #ef4444;
+    --background: #0f172a;
+    --surface: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --border-color: #334155;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+    --gradient: linear-gradient(135deg, #3b82f6, #1d4ed8);
+}
+
+.light-mode {
+    /* Light Theme Variables */
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --secondary-color: #64748b;
+    --success-color: #22c55e;
+    --danger-color: #ef4444;
+    --background: #ffffff;
+    --surface: #f1f5f9;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+    --gradient: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+/* Ensure all elements respect the theme variables */
+body {
+    background: var(--background);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-section {
+    text-align: center;
+    padding: 48px 24px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.info-section h2 {
+    font-size: 1.8em;
+    font-weight: 600;
+    margin-bottom: 16px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.info-section p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 24px;
+    transition: background 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.store-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: all 0.2s ease;
+}
+
+.store-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo i {
+    font-size: 1.8em;
+    color: var(--primary-color);
+}
+
+.logo h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+.temp-number {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.temp-number:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.premium-btn {
+    padding: 8px 20px;
+    background: #ffd700;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.premium-btn:hover {
+    background: #ffed4a;
+    transform: translateY(-1px);
+}
+
+.email-box {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    padding: 24px;
+    border: 1px dashed var(--border-color);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: background 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+}
+
+.email-box h2 {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.email-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient);
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
+}
+
+.email-box:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.email-address {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.email-input-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 0 16px;
+    transition: all 0.3s ease;
+    height: 48px;
+}
+
+.email-input-wrapper:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.email-input-wrapper i {
+    color: var(--secondary-color);
+    font-size: 1.1em;
+}
+
+#email {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: transparent;
+    font-size: 1em;
+    color: var(--text-primary);
+    margin-left: 8px;
+}
+
+#email:focus {
+    outline: none;
+}
+
+button:not(.premium-btn) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text-primary);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid var(--border-color);
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+}
+
+#copyBtn {
+    background: var(--primary-color);
+    color: white;
+}
+
+#refreshBtn {
+    background: var(--success-color);
+    color: white;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.1);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.timer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9em;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px 24px;
+    border-radius: 12px;
+    margin-top: 16px;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(8px);
+    transition: background 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+}
+
+.inbox {
+    background: var(--surface);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+}
+
+.inbox h2 {
+    font-size: 1.2em;
+    padding: 16px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.inbox-controls {
+    display: flex;
+    gap: 8px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.inbox-controls button {
+    background: transparent;
+    color: var(--text-primary);
+    font-size: 0.9em;
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+}
+
+.inbox-controls button:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--primary-color);
+}
+
+.messages {
+    max-height: 500px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-right: 8px;
+    text-align: center;
+    margin: 30px;
+}
+
+.messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+.messages::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.messages::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.messages::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.message {
+    padding: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: var(--surface);
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+}
+
+.message:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: var(--primary-color);
+}
+
+.message:last-child {
+    margin-bottom: 0;
+}
+
+.message h3 {
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    font-weight: 500;
+    font-size: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.message h3 i {
+    color: var(--primary-color);
+    font-size: 0.9em;
+}
+
+.message .meta {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.message .meta i {
+    color: var(--primary-color);
+}
+
+.message .preview {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    line-height: 1.4;
+    display: -webkit-box;
+    
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    position: relative;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--surface);
+    color: var(--text-secondary);
+    border-top: 1px solid var(--border-color);
+    transition: background 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+}
+
+footer .social-icons {
+    margin-top: 10px;
+}
+
+footer .social-icons a {
+    margin: 0 10px;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer .social-icons a:hover {
+    color: var(--primary-color);
+}
+
+/* Email Modal Styles */
+.email-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.email-modal-content {
+    background: var(--surface);
+    border-radius: 8px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideIn 0.2s ease;
+    border: 1px solid var(--border-color);
+}
+
+.email-modal-header {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    background: var(--surface);
+    z-index: 1;
+}
+
+.email-modal-header h2 {
+    font-size: 1.2em;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.email-modal-header .meta {
+    color: var(--text-secondary);
+    font-size: 0.85em;
+    display: flex;
+    gap: 12px;
+}
+
+.email-modal-body {
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.email-content {
+    line-height: 1.5;
+    color: white; 
+    font-size: 0.95em;
+}
+
+/* Loading Spinner */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border: 3px solid transparent;
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: spin .6s linear infinite;
+    opacity: 0;
+}
+
+.loading.active::after {
+    opacity: 1;
+}
+
+.loading.active > * {
+    opacity: 0.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .email-address {
+        flex-direction: column;
+    }
+
+    button {
+        width:100%;
+    }
+
+    header {
+        padding: 20px 0;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+}
+
+/* Hamburger Menu Styles */
+.hamburger-menu {
+    position: relative;
+    z-index: 10001; /* Ensure it is above other elements */
+}
+
+.hamburger-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 36px; /* Increased size for better visibility */
+    height: 28px; /* Adjusted height for better spacing */
+    padding: 0;
+    position: absolute; /* Ensure proper placement */
+    top: 16px; /* Adjusted for alignment */
+    right: 24px; /* Adjusted for alignment */
+    z-index: 10001; /* Ensure it is above the overlay */
+}
+
+.hamburger-button .bar {
+    display: block;
+    width: 100%;
+    height: 4px; /* Increased height for better visibility */
+    background: white; /* Ensure the bars are visible */
+    border-radius: 2px; /* Add rounded corners for a modern look */
+    transition: all 0.3s ease;
+}
+
+.hamburger-button.open .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-button.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-button.open .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.menu-list {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #222B39;
+    list-style: none;
+    margin: 0;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10001;
+    animation: slideDown 0.3s ease;
+}
+
+.menu-list li {
+    margin: 0.5rem 0;
+}
+
+.menu-list a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.menu-list a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #007BFF;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.theme-toggle i {
+    font-size: 1.2em;
+    color: var(--text-primary);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.theme-toggle:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.theme-toggle[data-theme="light"] i {
+    transform: rotate(180deg);
+    color: var(--primary-color);
+}
+
+/* Responsive Adjustment */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: flex-end;
+}

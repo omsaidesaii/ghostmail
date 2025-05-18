@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TempMail - Disposable Email Service</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-left">
+                <div class="logo">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <h1>GHOSTMAIL</h1>
+                </div>
+            </div>
+            <div class="header-right">
+                <div id="hamburger-menu"></div> <!-- React component mount point -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" data-theme="dark">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <div class="email-box">
+                <h2>Your Temporary Email Address</h2>
+                <div class="email-address">
+                <div class="email-input-wrapper">
+                    <i class="fas fa-envelope"></i>
+                    <input type="text" id="email" readonly>
+                </div>
+                <button id="copyBtn" onclick="copyEmail()">
+                    <i class="fas fa-copy"></i>
+                    Copy
+                </button>
+                <button id="refreshBtn" onclick="generateNewEmail()">
+                    <i class="fas fa-sync-alt"></i>
+                    New Email
+                </button>
+            </div>
+                <div class="timer">
+                    <span>Auto-refresh in: </span>
+                    <span id="countdown">10:00</span>
+                </div>
+            </div>
+
+            <div class="inbox">
+                <h2>Inbox</h2>
+                <div class="inbox-controls">
+                    <button onclick="refreshInbox()">
+                        <i class="fas fa-sync-alt"></i>
+                        Refresh
+                    </button>
+                    <button onclick="clearInbox()">
+                        <i class="fas fa-trash-alt"></i>
+                        Clear All
+                    </button>
+                </div>
+                <div id="messages" class="messages">
+                    <!-- Messages will be populated here -->
+                </div>
+            </div>
+        </main>
+
+        <div class="info-section">
+            <h2>What is Disposable Temporary E-mail?</h2>
+            <p>Forget about spam, advertising mailings, hacking and attacking robots. Keep your real mailbox clean and secure. Temp Mail provides temporary, secure, anonymous, free, disposable email address.</p>
+        </div>
+        <footer>
+            <p>© 2025 GhostMail. For temporary email needs.</p>
+            <div class="social-icons">
+                <a href="https://github.com/omsaidesaii" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/omsai-desai-a924a6300/" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:omsaidesai9@gmail.com" target="_blank" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+</html>
